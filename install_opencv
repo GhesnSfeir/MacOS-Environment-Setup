@@ -1,0 +1,10 @@
+cd ~/Programs
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
+cd opencv
+mkdir macOS_contrib_release
+cd macOS_contrib_release
+mkdir install
+
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=install -D OPENCV_EXTRA_MODULES_PATH=~/Programs/opencv_contrib/modules/ ..
+make -j4
