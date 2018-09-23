@@ -6,5 +6,16 @@ mkdir macOS_contrib_release
 cd macOS_contrib_release
 mkdir install
 
-cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=install -D OPENCV_EXTRA_MODULES_PATH=~/Programs/opencv_contrib/modules/ ..
+cmake -D CMAKE_BUILD_TYPE=Release -D OPENCV_ENABLE_NONFREE=True -D CMAKE_INSTALL_PREFIX=install -D OPENCV_EXTRA_MODULES_PATH=~/Programs/opencv_contrib/modules/ ..
 make -j4
+make install
+
+
+# Install gnuplot
+cd ~/Programs
+git clone https://github.com/dstahlke/gnuplot-iostream.git
+cp gnuplot-iostream/gnuplot-iostream.h /usr/local/include/
+
+brew install Caskroom/cask/aquaterm
+brew install gnuplot --with-aquaterm --with-qt4
+ln -s /usr/local/Cellar/gnuplot/5.0.4/bin/gnuplot /usr/local/bin/gnuplot
